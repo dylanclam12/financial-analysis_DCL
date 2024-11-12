@@ -223,7 +223,7 @@ def plot_data(
         template="plotly_dark",
     )
 
-    pio.write_html(fig, file=f"{ticker}.html", auto_open=True)
+    pio.write_html(fig, file="index.html", auto_open=True)
     fig.show()
 
 
