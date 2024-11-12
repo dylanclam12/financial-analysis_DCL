@@ -7,7 +7,8 @@ from plotly.subplots import make_subplots
 from collections import defaultdict
 
 import plotly.graph_objects as go
-import plotly.io as pio
+
+# import plotly.io as pio
 import pandas as pd
 
 from ..config import API_KEY, SECRET_KEY
@@ -223,7 +224,7 @@ def plot_data(
         template="plotly_dark",
     )
 
-    pio.write_html(fig, file="index.html", auto_open=True)
+    # pio.write_html(fig, file="index.html", auto_open=True)
     fig.show()
 
 
