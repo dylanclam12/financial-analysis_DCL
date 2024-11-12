@@ -7,6 +7,7 @@ from plotly.subplots import make_subplots
 from collections import defaultdict
 
 import plotly.graph_objects as go
+import plotly.io as pio
 import pandas as pd
 
 from ..config import API_KEY, SECRET_KEY
@@ -216,12 +217,13 @@ def plot_data(
     # Update layout for figure title and sizing
     fig.update_layout(
         title=ticker,
-        width=2000,
-        height=1200,
+        width=1583,
+        height=950,
         xaxis_rangeslider_visible=True,
         template="plotly_dark",
     )
 
+    pio.write_html(fig, file=f"{ticker}.html", auto_open=True)
     fig.show()
 
 
