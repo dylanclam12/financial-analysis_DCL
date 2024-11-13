@@ -48,7 +48,7 @@ def plot_sentiment(df: pd.DataFrame) -> None:
 
     sns.set_theme(style="darkgrid", palette="muted")
     plt.style.use("dark_background")
-    plt.figure(figsize=(50, 10))
+    plt.figure(figsize=(20, 6))
 
     # Plot sentiment scores as stacked bars
     plt.bar(
@@ -70,20 +70,20 @@ def plot_sentiment(df: pd.DataFrame) -> None:
     )
 
     # Set plot labels
-    plt.title("Sentiment Score Bar Plot", fontsize="30", color="white", pad=15)
-    plt.ylabel("Sentiment Score", fontsize="25", color="white", labelpad=15)
-    plt.yticks(fontsize=20)
-    plt.xlabel("Lines", fontsize="25", color="white", labelpad=15)
+    plt.title("Sentiment Score Bar Plot", fontsize="15", color="white", pad=15)
+    plt.ylabel("Sentiment Score", fontsize="13", color="white", labelpad=15)
+    plt.yticks(fontsize=10)
+    plt.xlabel("Lines", fontsize="13", color="white", labelpad=15)
     plt.xlim(-2, 151)
-    plt.xticks(fontsize=20)
+    plt.xticks(fontsize=10)
 
     # Set legend
     plt.legend(
         title="Sentiment",
-        title_fontsize=20,
+        title_fontsize=13,
         loc="upper left",
         bbox_to_anchor=(1, 1),
-        fontsize=20,
+        fontsize=13,
     )
     # Set grid
     plt.grid(True, color="gray", linestyle="--", linewidth=1)
