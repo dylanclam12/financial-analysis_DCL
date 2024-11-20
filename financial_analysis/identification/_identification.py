@@ -17,12 +17,38 @@ client = StockHistoricalDataClient(api_key=API_KEY, secret_key=SECRET_KEY)
 
 
 def get_rsi(df: pd.DataFrame, rsi_window: int) -> pd.DataFrame:
+    """
+    Calculates the Relative Strength Index (RSI) for a given DataFrame.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing at least a 'close' column with stock prices.
+        rsi_window: int
+            The number of periods to use in the RSI calculation.
+
+    Return
+        df: pd.DataFrame
+            The input DataFrame with an added 'rsi' column containing the RSI values.
+    """
     indicator_rsi = RSIIndicator(close=df["close"], window=rsi_window)
     df["rsi"] = indicator_rsi.rsi()
     return df
 
 
 def get_bb(df: pd.DataFrame, bb_window: int) -> pd.DataFrame:
+    """
+    Calculates Bollinger Bands and related indicators for a given DataFrame.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing at least a 'close' column with stock prices.
+        bb_window: int
+            The number of periods to use in the Bollinger Bands calculation.
+
+    Return
+        df: pd.DataFrame
+            The input DataFrame with added columns for Bollinger Bands and indicators.
+    """
     # calculate bollinger bands
     indicator_bb = BollingerBands(close=df["close"], window=bb_window, window_dev=2)
     # Add Bollinger Bands to the dataframe
@@ -46,6 +72,29 @@ def get_data(
     bb_window: int = 20,
     rsi_window: int = 14,
 ) -> pd.DataFrame:
+    """
+    Fetches historical stock price data and calculates optional indicators.
+
+    Parameters
+        ticker: str
+            The stock ticker symbol to fetch data for.
+        start: str
+            The start date for fetching historical data in 'YYYY-MM-DD' format. Default is '2023-01-01'.
+        end: str
+            The end date for fetching historical data in 'YYYY-MM-DD' format. Default is '2024-11-01'.
+        BB: bool
+            Whether to calculate Bollinger Bands. Default is False.
+        RSI: bool
+            Whether to calculate RSI. Default is False.
+        bb_window: int
+            The number of periods for Bollinger Bands calculation. Default is 20.
+        rsi_window: int
+            The number of periods for RSI calculation. Default is 14.
+
+    Return
+        df: pd.DataFrame
+            A DataFrame containing stock price data with optional indicator columns.
+    """
     # Creating request object
     request_params = StockBarsRequest(
         symbol_or_symbols=[ticker],
@@ -68,6 +117,23 @@ def get_data(
 def plot_data(
     df: pd.DataFrame, ticker: str, BB: bool = False, RSI: bool = False
 ) -> None:
+    """
+    Plots stock price data with optional Bollinger Bands and RSI indicators.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing stock price data and optional indicator columns.
+        ticker: str
+            The stock ticker symbol for the plot title.
+        BB: bool
+            Whether to include Bollinger Bands in the plot. Default is False.
+        RSI: bool
+            Whether to include RSI in the plot. Default is False.
+
+    Return
+        None
+            Displays the plot.
+    """
     if RSI:
         # Set up a 2-row subplot figure
         fig = make_subplots(
@@ -228,6 +294,17 @@ def plot_data(
 
 
 def short_identification(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Identifies periods where the stock is overbought based on Bollinger Bands and RSI.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing stock price data with Bollinger Bands and RSI indicators.
+
+    Return
+        time_period_df: pd.DataFrame
+            A DataFrame summarizing consecutive overbought periods, including durations and time ranges.
+    """
     # Filter the DataFrame to only include days where the price is above the upper Bollinger Band and the RSI is above 70
     bb_df = df.loc[df["bb_hi"] == 1].copy()
     bb_rsi_df = bb_df.loc[bb_df["rsi"] > 70].copy()
@@ -256,6 +333,17 @@ def short_identification(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def long_identification(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Identifies periods where the stock is oversold based on Bollinger Bands and RSI.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing stock price data with Bollinger Bands and RSI indicators.
+
+    Return
+        time_period_df: pd.DataFrame
+            A DataFrame summarizing consecutive oversold periods, including durations and time ranges.
+    """
     # Filter the DataFrame to only include days where the price is below the lower Bollinger Band and the RSI is below 30
     bb_df = df.loc[df["bb_li"] == 1].copy()
     bb_rsi_df = bb_df.loc[bb_df["rsi"] < 30].copy()

@@ -13,8 +13,32 @@ analyzer = SentimentIntensityAnalyzer()
 
 
 def sentiment_analysis(text_file: str) -> pd.DataFrame:
+    """
+    Performs sentiment analysis on a given text file.
+
+    Parameters
+        text_file: str
+            The path to a text file containing text data to analyze.
+
+    Returns
+        df: pd.DataFrame
+            A DataFrame containing the original text, preprocessed text, and sentiment scores
+            (negative, neutral, positive, and compound).
+    """
+
     # Preprocess text
     def preprocess_text(text):
+        """
+        Cleans and preprocesses text by tokenizing, removing stopwords, and lemmatizing.
+
+        Parameters
+            text: str
+                The text to preprocess.
+
+        Returns
+            processed_text: str
+                The preprocessed text.
+        """
         tokens = word_tokenize(text.lower())
         filtered_tokens = [
             token for token in tokens if token not in stopwords.words("english")
@@ -26,6 +50,17 @@ def sentiment_analysis(text_file: str) -> pd.DataFrame:
 
     # Get sentiment scores
     def get_sentiment(text):
+        """
+        Calculates sentiment scores for the given text using a sentiment analyzer.
+
+        Parameters
+            text: str
+                The text to analyze.
+
+        Returns
+            scores: dict
+                A dictionary containing sentiment scores (negative, neutral, positive, and compound).
+        """
         scores = analyzer.polarity_scores(text)
         return scores
 
@@ -44,6 +79,17 @@ def sentiment_analysis(text_file: str) -> pd.DataFrame:
 
 
 def plot_sentiment(df: pd.DataFrame) -> None:
+    """
+    Visualizes sentiment scores as a stacked bar chart.
+
+    Parameters
+        df: pd.DataFrame
+            A DataFrame containing sentiment scores ('neg', 'neu', 'pos') for each line of text.
+
+    Returns
+        None
+            Displays a bar plot of sentiment scores.
+    """
     df_sentiment = df.copy().reset_index()
 
     sns.set_theme(style="darkgrid", palette="muted")
