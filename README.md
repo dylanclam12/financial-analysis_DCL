@@ -23,7 +23,7 @@ This project showcases how financial models, natural language processing, and te
 
 ## Module 2: Sentiment Analysis
 
-**Sentiment Analysis** focuses on evaluating the sentiment expressed in the AAPL Q4 2024 earnings call transcript using natural language processing techniques. This module employs the SentimentIntensityAnalyzer from the VADER package to extract and visualize sentiment scores.
+**Sentiment Analysis** focuses on evaluating the sentiment expressed in the AAPL Q4 2024 earnings call transcript using natural language processing techniques. This module employs the SentimentIntensityAnalyzer from th [NLTK (Natural Language Toolkit)](https://www.nltk.org/) package to extract and visualize sentiment scores.
 
 1. **Sentiment Analysis of AAPL Q4 2024 Earnings Call:**
    - Processes the transcript by filtering stopwords, tokenizing words, and analyzing each line using VADER.
