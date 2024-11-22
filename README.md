@@ -7,6 +7,7 @@ The **Stock Analysis Project** aims to explore, evaluate, and visualize financia
 This project showcases how financial models, natural language processing, and technical indicators can be integrated to analyze market performance, evaluate sentiment, and identify trading opportunities. The ultimate goal is to provide a comprehensive framework for data-driven stock evaluation and trading strategy development.
 
 ## Module 1: Tech Stock Risk-Reward Analysis
+[View Notebook](./Module_1.ipynb)
 
 **Tech Stock Risk-Reward Analysis** explores the performance and risk characteristics of technology stocks, focusing on AAPL as a case study. The module uses the Capital Asset Pricing Model (CAPM) and the Security Market Line (SML) to evaluate the relationship between risk (beta) and return and incorporates alpha analysis to assess stock performance.
 
@@ -22,6 +23,7 @@ This project showcases how financial models, natural language processing, and te
 
 
 ## Module 2: Sentiment Analysis
+[View Notebook](./Module_2.ipynb)
 
 **Sentiment Analysis** focuses on evaluating the sentiment expressed in the AAPL Q4 2024 earnings call transcript using natural language processing techniques. This module employs the SentimentIntensityAnalyzer from th [NLTK (Natural Language Toolkit)](https://www.nltk.org/) package to extract and visualize sentiment scores.
 
@@ -35,6 +37,7 @@ This project showcases how financial models, natural language processing, and te
    - Highlights the distribution and trends of sentiment across the transcript.
 
 ## Module 3: Trade Entry Identification With Bollinger Band and RSI Analysis
+[View Notebook](./Module_3.ipynb)
 
 **Trade Entry Identification With Bollinger Band and RSI Analysis** conducts a technical analysis of AAPL stock from January 1, 2023, to November 1, 2024, using Bollinger Bands (BB) and the Relative Strength Index (RSI). It identifies potential long and short trade entry points and validates the effectiveness of the chosen entry methods.
 
