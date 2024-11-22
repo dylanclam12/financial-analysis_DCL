@@ -34,9 +34,9 @@ This project showcases how financial models, natural language processing, and te
    - Visualizes the positive, negative, and neutral sentiment scores for each line in the transcript using a **stacked bar plot**.
    - Highlights the distribution and trends of sentiment across the transcript.
 
-## Module 3: Long and Short Trade Entry Identification With Bollinger Band and RSI Analysis
+## Module 3: Trade Entry Identification With Bollinger Band and RSI Analysis
 
-**Long and Short Trade Entry Identification With Bollinger Band and RSI Analysis** conducts a technical analysis of AAPL stock from January 1, 2023, to November 1, 2024, using Bollinger Bands (BB) and the Relative Strength Index (RSI). It identifies potential long and short trade entry points and validates the effectiveness of the chosen entry methods.
+**Trade Entry Identification With Bollinger Band and RSI Analysis** conducts a technical analysis of AAPL stock from January 1, 2023, to November 1, 2024, using Bollinger Bands (BB) and the Relative Strength Index (RSI). It identifies potential long and short trade entry points and validates the effectiveness of the chosen entry methods.
 
 1. **Pulling and Plotting AAPL Data From Alpaca API:**
    - Retrieves daily stock data using the [Alpaca API](https://alpaca.markets/sdks/python/api_reference/data/stock/historical.html).
